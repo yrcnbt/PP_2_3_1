@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <table width = "25%" border = "3">
+        <tr th:each="car : ${cars}">
+        <td th:utext="${car.brand}"></td>
+        <td th:utext="${car.model}"></td>
+        <td th:utext="${car.bodyType}"></td>
+    </tr>
+    </table>
+</div>
+</body>
+</html>
