@@ -1,10 +1,13 @@
 package web.Service;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CarServiceImpl implements CarService {
 
     private List<Car> cars;
@@ -19,10 +22,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCar(Integer quantity){
-        if(quantity != null) {
-            return cars.stream().limit(quantity).toList();
-        } else{
+        if(quantity <= 0) {
             return cars;
+        } else {
+            return cars.stream().limit(quantity).toList();
         }
     }
 }

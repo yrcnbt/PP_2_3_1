@@ -15,11 +15,15 @@ import web.model.Car;
 
 @Controller
 public class CarController {
-    CarService cs = new CarServiceImpl();
+
+    private final CarService cs;
+    @Autowired
+    public CarController(CarService cs){
+        this.cs = cs;
+    }
     @GetMapping(value = "/cars")
     public String index(ModelMap model, @RequestParam(value = "count", required = false) Integer count) {
         model.addAttribute("cars", cs.getCar(count));
         return "cars";
     }
-    
 }
