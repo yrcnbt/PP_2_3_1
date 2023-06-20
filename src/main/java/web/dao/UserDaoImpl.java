@@ -7,23 +7,22 @@ import web.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-
 @Repository
-@Transactional
 public class UserDaoImpl implements UserDao{
 
     @PersistenceContext
     private EntityManager em;
-
+    @Transactional
     @Override
     public void addUser(User user) {
         em.persist(user);
     }
-
+    @Transactional
     @Override
     public void updateUser(Long id, User updatedUser) {
         em.merge(updatedUser);
     }
+    @Transactional
     @Override
     public void removeUser(User user) {
         em.remove(em.contains(user) ? user : em.merge(user));
